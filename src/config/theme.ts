@@ -19,4 +19,15 @@ const colors = {
   },
 };
 
-export const theme = extendTheme({ colors });
+const styles = {
+  global: () => ({
+    'html, body': {
+      backgroundColor: '#F6F6F6',
+    },
+  }),
+};
+
+export const theme = extendTheme({
+  colors,
+  styles,
+});
