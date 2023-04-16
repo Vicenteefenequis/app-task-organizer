@@ -1,8 +1,9 @@
 import React from 'react';
+import Styles from './style.module.scss';
 
-function App() {
+function Task() {
   return (
-    <div className="App">
+    <div className={Styles.taskWrap}>
       <header className="App-header">
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
@@ -20,4 +21,4 @@ function App() {
   );
 }
 
-export default App;
+export default Task;
