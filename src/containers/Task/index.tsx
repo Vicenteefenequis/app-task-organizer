@@ -1,23 +1,13 @@
 import React from 'react';
-import Styles from './style.module.scss';
+import { Header } from '#/components';
+import { Container, Input } from '@chakra-ui/react';
 
 function Task() {
   return (
-    <div className={Styles.taskWrap}>
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container maxW="container.lg" bg="gray.400" mt={'24px'}>
+      <Header name="Vicente Nascimento" tasks={2} />
+      <Input />
+    </Container>
   );
 }
 
