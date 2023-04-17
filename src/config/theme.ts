@@ -8,9 +8,7 @@ const colors = {
   red: {
     400: '#FF2020',
   },
-  white: {
-    400: '#FFFFFF',
-  },
+
   purple: {
     400: '#672EE3',
   },
@@ -26,7 +24,6 @@ const styles = {
     },
   }),
 };
-
 export const theme = extendTheme({
   colors,
   styles,
