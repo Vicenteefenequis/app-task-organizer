@@ -5,12 +5,12 @@ import { FiPlusCircle } from 'react-icons/fi';
 import List from './components/List';
 import { useTaskListQuery } from '#/queries/useTaskListQuery';
 import CreateTaskForm from './components/Form';
-import { useTaskMutation } from '#/queries/useTaskMutation';
+import { useTaskCreateMutation } from '#/queries/useTaskCreateMutation';
 import { Task as TaskModel } from '#/models/task';
 
 function Task() {
   const { data: tasks } = useTaskListQuery();
-  const { mutate: mutateTask } = useTaskMutation();
+  const { mutate: mutateTask } = useTaskCreateMutation();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleCreateTask = useCallback(

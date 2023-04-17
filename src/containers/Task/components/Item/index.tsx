@@ -1,4 +1,6 @@
+import { AlertDialog } from '#/components';
 import { Task } from '#/models/task';
+import { useTaskDeleteMutation } from '#/queries/useTaskDeleteMutation';
 import {
   Card,
   Checkbox,
@@ -7,8 +9,9 @@ import {
   VStack,
   Text,
   IconButton,
+  useDisclosure,
 } from '@chakra-ui/react';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { FiEdit, FiTrash } from 'react-icons/fi';
 
 const Item: React.FC<Task.Model> = ({
@@ -18,6 +21,17 @@ const Item: React.FC<Task.Model> = ({
   is_completed,
   due_date_at,
 }) => {
+  const { mutate: mutateTaskDelete } = useTaskDeleteMutation();
+  const {
+    onClose: onCloseDeleteTask,
+    onOpen: onOpenDeleteTask,
+    isOpen: isOpenDeleteTask,
+  } = useDisclosure();
+
+  const handleDeleteTask = useCallback(() => {
+    mutateTaskDelete(id);
+  }, [id, mutateTaskDelete]);
+
   return (
     <Card p={3} minW={'full'}>
       <HStack
@@ -41,9 +55,23 @@ const Item: React.FC<Task.Model> = ({
         </HStack>
         <HStack alignItems={'flex-start'}>
           <IconButton aria-label="Add to friends" icon={<FiEdit />} />
-          <IconButton aria-label="Add to friends" icon={<FiTrash />} />
+          <IconButton
+            aria-label="Add to friends"
+            icon={<FiTrash />}
+            onClick={onOpenDeleteTask}
+          />
         </HStack>
       </HStack>
+      <AlertDialog
+        title="Deletar task"
+        description="Tem certeza que deseja deletar a task?"
+        isOpen={isOpenDeleteTask}
+        onClose={onCloseDeleteTask}
+        // onConfirm={handleDeleteTask}
+        textCancel="Cancelar"
+        textConfirm="Deletar"
+        colorSchemeConfirm="red"
+      />
     </Card>
   );
 };
