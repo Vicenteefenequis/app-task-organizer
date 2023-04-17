@@ -6,7 +6,7 @@ import {
   Heading,
   VStack,
   Text,
-  Button,
+  IconButton,
 } from '@chakra-ui/react';
 import React from 'react';
 import { FiEdit, FiTrash } from 'react-icons/fi';
@@ -20,7 +20,11 @@ const Item: React.FC<Task.Model> = ({
 }) => {
   return (
     <Card p={3}>
-      <HStack alignItems={'stretch'} justifyContent={'space-between'}>
+      <HStack
+        alignItems={'stretch'}
+        justifyContent={'space-between'}
+        spacing={4}
+      >
         <HStack spacing={8} alignItems={'flex-start'}>
           <Checkbox checked={completed} />
           <VStack alignItems={'flex-start'}>
@@ -35,21 +39,9 @@ const Item: React.FC<Task.Model> = ({
             </Text>
           </VStack>
         </HStack>
-        <HStack alignItems={'flex-start'} justifyContent={'flex-end'}>
-          <Button
-            colorScheme="whiteAlpha"
-            leftIcon={<FiEdit />}
-            variant="solid"
-            color="black"
-            padding={0}
-          />
-          <Button
-            colorScheme="whiteAlpha"
-            leftIcon={<FiTrash />}
-            variant="solid"
-            color="black"
-            padding={0}
-          />
+        <HStack alignItems={'flex-start'}>
+          <IconButton aria-label="Add to friends" icon={<FiEdit />} />
+          <IconButton aria-label="Add to friends" icon={<FiTrash />} />
         </HStack>
       </HStack>
     </Card>
