@@ -7,7 +7,7 @@ export namespace Task {
   };
 
   export type Model = {
-    id: number;
+    id: string;
     name: string;
     description: string;
     is_completed: boolean;
