@@ -14,5 +14,10 @@ export namespace Task {
     dueDateAt: string;
   };
 
-  export type List = Model[];
+  export type List = {
+    items: Model[];
+    current_page: number;
+    per_page: number;
+    total: number;
+  };
 }
