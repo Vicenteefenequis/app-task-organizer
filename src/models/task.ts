@@ -2,7 +2,7 @@ export namespace Task {
   export type Input = {
     name: string;
     description: string;
-    completed: boolean;
+    is_completed: boolean;
     due_date_at: Date;
   };
 
@@ -10,7 +10,7 @@ export namespace Task {
     id: number;
     name: string;
     description: string;
-    completed: boolean;
+    is_completed: boolean;
     due_date_at: string;
   };
 

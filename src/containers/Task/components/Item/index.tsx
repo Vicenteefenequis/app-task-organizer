@@ -15,18 +15,18 @@ const Item: React.FC<Task.Model> = ({
   id,
   name,
   description,
-  completed,
+  is_completed,
   due_date_at,
 }) => {
   return (
-    <Card p={3}>
+    <Card p={3} minW={'full'}>
       <HStack
         alignItems={'stretch'}
         justifyContent={'space-between'}
         spacing={4}
       >
         <HStack spacing={8} alignItems={'flex-start'}>
-          <Checkbox checked={completed} />
+          <Checkbox checked={is_completed} />
           <VStack alignItems={'flex-start'}>
             <Heading size="xs" textTransform="uppercase">
               {name}

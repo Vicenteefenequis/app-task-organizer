@@ -55,7 +55,7 @@ const CreateTaskForm = withFormik<FormProps, FormValues>({
   mapPropsToValues: () => ({
     name: '',
     description: '',
-    completed: false,
+    is_completed: false,
     due_date_at: new Date(),
   }),
 })(Form);

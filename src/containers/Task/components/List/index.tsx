@@ -10,9 +10,9 @@ type Props = {
 const List: React.FC<Props> = ({ tasks }: Props) => {
   if (!tasks.length) return <div>There is no tasks</div>;
   return (
-    <VStack spacing={4} w="fit-content">
+    <VStack spacing={4}>
       {tasks.map((task) => (
-        <Item {...task} />
+        <Item key={task.id} {...task} />
       ))}
     </VStack>
   );
