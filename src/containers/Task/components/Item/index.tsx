@@ -67,9 +67,7 @@ const Item: React.FC<Task.Model> = ({
         description="Tem certeza que deseja deletar a task?"
         isOpen={isOpenDeleteTask}
         onClose={onCloseDeleteTask}
-        // onConfirm={handleDeleteTask}
-        textCancel="Cancelar"
-        textConfirm="Deletar"
+        onConfirm={handleDeleteTask}
         colorSchemeConfirm="red"
       />
     </Card>
