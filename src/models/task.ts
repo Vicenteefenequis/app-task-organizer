@@ -3,7 +3,7 @@ export namespace Task {
     name: string;
     description: string;
     completed: boolean;
-    dueDateAt: string;
+    due_date_at: string;
   };
 
   export type Model = {
@@ -11,7 +11,7 @@ export namespace Task {
     name: string;
     description: string;
     completed: boolean;
-    dueDateAt: string;
+    due_date_at: string;
   };
 
   export type List = {

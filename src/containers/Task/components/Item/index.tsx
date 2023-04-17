@@ -16,7 +16,7 @@ const Item: React.FC<Task.Model> = ({
   name,
   description,
   completed,
-  dueDateAt,
+  due_date_at,
 }) => {
   return (
     <Card p={3}>
@@ -31,7 +31,7 @@ const Item: React.FC<Task.Model> = ({
               {description}
             </Text>
             <Text pt="2" fontSize="sm">
-              {dueDateAt}
+              {due_date_at}
             </Text>
           </VStack>
         </HStack>
