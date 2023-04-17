@@ -1,21 +1,16 @@
-import { Task } from '#/models/task';
-import { postTask } from '#/services/postTask';
+import { deletTask } from '#/services/deleteTask';
 import { useToast } from '@chakra-ui/react';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { useMutation } from '@tanstack/react-query';
 import { isAxiosError } from 'axios';
 
-export const useTaskMutation = () => {
+export const useTaskDeleteMutation = () => {
   const toast = useToast();
-
-  const queryClient = useQueryClient();
-
   return useMutation({
-    mutationKey: ['task'],
-    mutationFn: async (task: Task.Input) => postTask(task),
-    onSuccess: async () => {
-      await queryClient.invalidateQueries(['tasks']);
+    mutationKey: ['delete-task'],
+    mutationFn: deletTask,
+    onSuccess: () => {
       toast({
-        title: 'Tarefa criada com sucesso',
+        title: 'Tarefa deletada com sucesso',
         position: 'top-right',
         isClosable: true,
         status: 'success',
@@ -31,7 +26,7 @@ export const useTaskMutation = () => {
         });
       } else {
         toast({
-          title: 'Erro ao criar tarefa',
+          title: 'Erro ao deletar tarefa',
           position: 'top-right',
           isClosable: true,
           status: 'error',
