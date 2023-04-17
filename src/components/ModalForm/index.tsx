@@ -20,7 +20,7 @@ const ModalForm: React.FC<Props> = ({ title, isOpen, onClose, children }) => {
   return (
     <Modal onClose={onClose} isOpen={isOpen} isCentered>
       <ModalOverlay />
-      <ModalContent>
+      <ModalContent pb={4}>
         <ModalHeader>{title}</ModalHeader>
         <ModalCloseButton />
         <ModalBody>{children}</ModalBody>
