@@ -20,4 +20,8 @@ export namespace Task {
     per_page: number;
     total: number;
   };
+
+  export type Output = {
+    id: string;
+  };
 }
