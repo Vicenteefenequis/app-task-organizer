@@ -56,7 +56,9 @@ const Form: React.FC<FormProps & FormikProps<FormValues>> = ({
         <DatePicker
           value={values.due_date_at}
           onChange={(e) => setFieldValue('due_date_at', e)}
+          placeholder="Data de vencimento"
         />
+        <FormErrorMessage>{errors.due_date_at}</FormErrorMessage>
       </FormControl>
       <Button type="submit" colorScheme={'blue'} mt={5}>
         Salvar
