@@ -29,13 +29,14 @@ export const useTaskMutation = () => {
           isClosable: true,
           status: 'error',
         });
+      } else {
+        toast({
+          title: 'Erro ao criar tarefa',
+          position: 'top-right',
+          isClosable: true,
+          status: 'error',
+        });
       }
-      toast({
-        title: 'Erro ao criar tarefa',
-        position: 'top-right',
-        isClosable: true,
-        status: 'error',
-      });
     },
   });
 };

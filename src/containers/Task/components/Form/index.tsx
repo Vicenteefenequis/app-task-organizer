@@ -1,8 +1,15 @@
 import { DatePicker } from '#/components';
 import { Task } from '#/models/task';
-import { Box, Button, Input } from '@chakra-ui/react';
+import {
+  Box,
+  Button,
+  FormControl,
+  FormErrorMessage,
+  Input,
+} from '@chakra-ui/react';
 import { FormikProps, withFormik } from 'formik';
 import React from 'react';
+import { CreateTaskSchema } from './schema';
 
 type FormProps = {
   onSubmit: (values: FormValues) => void;
@@ -17,28 +24,40 @@ const Form: React.FC<FormProps & FormikProps<FormValues>> = ({
   errors,
   submitCount,
 }) => {
+  const hasError = (key: keyof FormValues) => submitCount > 0 && !!errors[key];
+
   return (
     <Box
-      display="flex"
+      display={'flex'}
       flexDir={'column'}
+      gap={5}
       as="form"
       onSubmit={handleSubmit}
-      gap={4}
     >
-      <Input
-        value={values.name}
-        placeholder="Nome"
-        onChange={(e) => setFieldValue('name', e.target.value)}
-      />
-      <Input
-        value={values.description}
-        placeholder="Description"
-        onChange={(e) => setFieldValue('description', e.target.value)}
-      />
-      <DatePicker
-        value={values.due_date_at}
-        onChange={(e) => setFieldValue('due_date_at', e)}
-      />
+      <FormControl isInvalid={hasError('name')}>
+        <Input
+          value={values.name}
+          placeholder="Nome"
+          onChange={(e) => setFieldValue('name', e.target.value)}
+        />
+        <FormErrorMessage>{errors.name}</FormErrorMessage>
+      </FormControl>
+
+      <FormControl isInvalid={hasError('description')}>
+        <Input
+          value={values.description}
+          placeholder="Description"
+          onChange={(e) => setFieldValue('description', e.target.value)}
+        />
+        <FormErrorMessage>{errors.description}</FormErrorMessage>
+      </FormControl>
+
+      <FormControl isInvalid={hasError('due_date_at')}>
+        <DatePicker
+          value={values.due_date_at}
+          onChange={(e) => setFieldValue('due_date_at', e)}
+        />
+      </FormControl>
       <Button type="submit" colorScheme={'blue'} mt={5}>
         Salvar
       </Button>
@@ -47,7 +66,6 @@ const Form: React.FC<FormProps & FormikProps<FormValues>> = ({
 };
 
 const CreateTaskForm = withFormik<FormProps, FormValues>({
-  enableReinitialize: true,
   handleSubmit: (values, { props, resetForm }) => {
     props.onSubmit(values);
     resetForm();
@@ -56,8 +74,9 @@ const CreateTaskForm = withFormik<FormProps, FormValues>({
     name: '',
     description: '',
     is_completed: false,
-    due_date_at: new Date(),
+    due_date_at: null,
   }),
+  validationSchema: CreateTaskSchema,
 })(Form);
 
 export default CreateTaskForm;
