@@ -11,12 +11,13 @@ import {
 import React from 'react';
 
 type Props = {
-  isOpen: boolean;
-  onClose: () => void;
   title: string;
   description: string;
-  textCancel: string;
-  textConfirm: string;
+  isOpen: boolean;
+  onClose: () => void;
+  onConfirm: () => void;
+  textCancel?: string;
+  textConfirm?: string;
   colorSchemeConfirm?: ThemeTypings['colorSchemes'];
 };
 
@@ -25,9 +26,10 @@ const AlertDialog: React.FC<Props> = ({
   onClose,
   title,
   description,
-  textCancel,
-  textConfirm,
+  textCancel = 'Cancelar',
+  textConfirm = 'Confirmar',
   colorSchemeConfirm = 'blue',
+  onConfirm,
 }) => {
   const cancelRef = React.useRef(null);
 
@@ -39,7 +41,7 @@ const AlertDialog: React.FC<Props> = ({
       isOpen={isOpen}
       isCentered
     >
-      <AlertDialogOverlay bg="whiteAlpha.100">
+      <AlertDialogOverlay>
         <AlertDialogContent>
           <AlertDialogHeader fontSize="lg" fontWeight="bold">
             {title}
@@ -51,7 +53,14 @@ const AlertDialog: React.FC<Props> = ({
             <Button onClick={onClose} ref={cancelRef}>
               {textCancel}
             </Button>
-            <Button colorScheme={colorSchemeConfirm} onClick={onClose} ml={3}>
+            <Button
+              colorScheme={colorSchemeConfirm}
+              onClick={() => {
+                onConfirm();
+                onClose();
+              }}
+              ml={3}
+            >
               {textConfirm}
             </Button>
           </AlertDialogFooter>
