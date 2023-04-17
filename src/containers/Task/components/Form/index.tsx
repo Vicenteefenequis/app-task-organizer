@@ -25,8 +25,16 @@ const Form: React.FC<FormProps & FormikProps<FormValues>> = ({
       onSubmit={handleSubmit}
       gap={4}
     >
-      <Input placeholder="Nome" />
-      <Input placeholder="Description" />
+      <Input
+        value={values.name}
+        placeholder="Nome"
+        onChange={(e) => setFieldValue('name', e.target.value)}
+      />
+      <Input
+        value={values.description}
+        placeholder="Description"
+        onChange={(e) => setFieldValue('description', e.target.value)}
+      />
       <DatePicker
         value={values.due_date_at}
         onChange={(e) => setFieldValue('due_date_at', e)}
