@@ -14,7 +14,7 @@ http://localhost:8080/api/swagger-ui/index.html
 
 > ## Fluxo ✅⛔️
 1. ✅ Fazer construção da tela com a rota **/tarefas**
-2. ⛔️ Fazer a listagem na requsição do tipo **GET** na rota **/tasks**
+2. ✅ Fazer a listagem na requsição do tipo **GET** na rota **/tasks**
 3. ⛔️ Construir formulário com os campos title, description e dueDate
 4. ⛔️ Validar dados obrigatório title, description e dueDate
 5. ⛔️ Fazer uma requisição do tipo **POST** na rota **/tasks** com os dados
