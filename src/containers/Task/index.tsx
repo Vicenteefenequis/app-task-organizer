@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo } from 'react';
 import { Header, ModalForm } from '#/components';
 import { Button, Container, useDisclosure } from '@chakra-ui/react';
 import { FiPlusCircle } from 'react-icons/fi';
@@ -21,9 +21,14 @@ function Task() {
     [mutateTask, onClose]
   );
 
+  const quantityTasksToCompleted = useMemo(
+    () => tasks?.items.filter((task) => !task.is_completed).length || 0,
+    [tasks?.items]
+  );
+
   return (
     <Container maxW="container.lg" bg="gray.400" mt={'24px'}>
-      <Header name="Vicente Nascimento" tasks={2} />
+      <Header name="Vicente Nascimento" tasks={quantityTasksToCompleted} />
       <Button
         colorScheme="whiteAlpha"
         leftIcon={<FiPlusCircle />}

@@ -3,7 +3,7 @@ import { Task } from '#/models/task';
 
 export const getTasks = async (): Promise<Task.List> => {
   const { data } = await request().get<Task.List>(
-    '/tasks?sort=createdAt&dir=desc'
+    '/tasks?sort=createdAt&dir=desc&perPage=30'
   );
   return data;
 };
