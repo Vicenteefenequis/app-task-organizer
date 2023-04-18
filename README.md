@@ -45,3 +45,11 @@ npm start
 * Type Alias
 * Generics
 * Namespace
+
+> ## Links úteis
+* [React](https://react.dev/)
+* [ReactQuery](https://tanstack.com/query/v4/docs/react/overview)
+* [ChackraUI](https://chakra-ui.com/docs/)
+* [Skeleton](https://chakra-ui.com/docs/components/skeleton/usage)
+* [Axios](https://axios-http.com/ptbr/docs/intro)
+* [ReactIcons](https://react-icons.github.io/react-icons)

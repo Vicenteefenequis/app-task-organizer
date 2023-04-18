@@ -22,8 +22,9 @@ http://localhost:8080/api/swagger-ui/index.html
 7. ✅ Deletar uma task na requisição do tipo **DELETE** na rota **/tasks/:id**
 8. ✅ Marcar a task como concluída na requisição do tipo **PATCH** na rota **/tasks/:id/toggle-completed**
 9. ✅ Colocar quantidades de tasks que faltam para completar
-10. ⛔️ Colocar tasks atrasadas com a cor vermelha na data de vencimento no component **ITEM** 
-11. ⛔️ **DESAFIO** Alterar uma task na requisição do tipo **PUT** na rota **/tasks/:id**
-12. ⛔️ **DESAFIO** Fazer  paginação das tasks no endpoint **GET**
+10. ✅ Colocar tasks atrasadas com a cor vermelha **ITEM** 
+11. ⛔️ **DESAFIO** Fazer skeleton dos card`s de tasks
+12. ⛔️ **DESAFIO** Alterar uma task na requisição do tipo **PUT** na rota **/tasks/:id**
+13. ⛔️ **DESAFIO** Fazer  paginação das tasks no endpoint **GET**
 
 

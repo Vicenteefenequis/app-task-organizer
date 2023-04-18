@@ -14,6 +14,7 @@ import {
 } from '@chakra-ui/react';
 import React, { useCallback } from 'react';
 import { FiEdit, FiTrash } from 'react-icons/fi';
+import moment from 'moment';
 
 const Item: React.FC<Task.Model> = ({
   id,
@@ -39,6 +40,11 @@ const Item: React.FC<Task.Model> = ({
     mutateToggleCompleted(id);
   }, [id, mutateToggleCompleted]);
 
+  const overdueTask = moment
+    .utc(due_date_at)
+    .add(1, 'days')
+    .isBefore(moment.utc());
+
   return (
     <Card p={3} minW={'full'}>
       <HStack
@@ -55,8 +61,12 @@ const Item: React.FC<Task.Model> = ({
             <Text pt="2" fontSize="sm" mt={0}>
               {description}
             </Text>
-            <Text pt="2" fontSize="sm">
-              {due_date_at}
+            <Text
+              fontSize="sm"
+              color={overdueTask ? 'red' : 'black'}
+              fontWeight="bold"
+            >
+              {moment.utc(due_date_at).format('DD/MM/YYYY')}
             </Text>
           </VStack>
         </HStack>
