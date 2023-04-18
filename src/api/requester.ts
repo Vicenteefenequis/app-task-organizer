@@ -29,7 +29,7 @@ export const request = (config?: AxiosRequestConfig, contentType?: string) => {
     async put<T>(uri: string, data: unknown): Promise<AxiosResponse<T>> {
       return await service.put<T>(uri, data);
     },
-    async patch<T>(uri: string, data: unknown): Promise<AxiosResponse<T>> {
+    async patch<T>(uri: string, data?: unknown): Promise<AxiosResponse<T>> {
       return await service.patch<T>(uri, data);
     },
     async delete<T>(uri: string): Promise<AxiosResponse<T>> {
