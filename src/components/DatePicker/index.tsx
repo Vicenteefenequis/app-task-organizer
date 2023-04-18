@@ -14,7 +14,6 @@ const DatePicker: React.FC<Props> = ({ value, onChange, placeholder }) => {
       selected={value}
       onChange={onChange}
       dateFormat={'dd/MM/yyyy'}
-      showTimeSelect
       placeholderText={placeholder}
       customInput={<Input />}
     />
