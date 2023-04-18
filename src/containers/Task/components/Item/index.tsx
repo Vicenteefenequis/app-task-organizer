@@ -1,6 +1,7 @@
 import { AlertDialog } from '#/components';
 import { Task } from '#/models/task';
 import { useTaskDeleteMutation } from '#/queries/useTaskDeleteMutation';
+import { useTaskToggleCompletedMutation } from '#/queries/useTaskToggleCompletedMutation';
 import {
   Card,
   Checkbox,
@@ -22,6 +23,8 @@ const Item: React.FC<Task.Model> = ({
   due_date_at,
 }) => {
   const { mutate: mutateTaskDelete } = useTaskDeleteMutation();
+  const { mutate: mutateToggleCompleted } = useTaskToggleCompletedMutation();
+
   const {
     onClose: onCloseDeleteTask,
     onOpen: onOpenDeleteTask,
@@ -32,6 +35,10 @@ const Item: React.FC<Task.Model> = ({
     mutateTaskDelete(id);
   }, [id, mutateTaskDelete]);
 
+  const handleToggleCompleted = useCallback(() => {
+    mutateToggleCompleted(id);
+  }, [id, mutateToggleCompleted]);
+
   return (
     <Card p={3} minW={'full'}>
       <HStack
@@ -40,7 +47,7 @@ const Item: React.FC<Task.Model> = ({
         spacing={4}
       >
         <HStack spacing={8} alignItems={'flex-start'}>
-          <Checkbox checked={is_completed} />
+          <Checkbox onChange={handleToggleCompleted} isChecked={is_completed} />
           <VStack alignItems={'flex-start'}>
             <Heading size="xs" textTransform="uppercase">
               {name}
