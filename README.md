@@ -24,7 +24,7 @@ npm start
 * React Router DOM
 * Axios
 * React-Query
-* Material UI
+* Chakra UI
 * Formik
 * Yup
 
